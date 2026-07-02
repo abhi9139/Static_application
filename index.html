@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mohit Chand | Premium Companion & Escort</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <style>
+    :root {
+      --gold:     #C9A84C;
+      --gold-lt:  #E8D5A3;
+      --dark:     #0D0D0D;
+      --charcoal: #1A1A1A;
+      --mid:      #2C2C2C;
+      --muted:    #7A7A7A;
+      --light:    #F5F2ED;
+      --white:    #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--light);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .display-serif {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+    .gold { color: var(--gold); }
+    .muted { color: var(--muted); }
+
+    /* NAVBAR */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100; padding: 1.2rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: background 0.4s, backdrop-filter 0.4s;
+    }
+    #navbar.scrolled {
+      background: rgba(13,13,13,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 300; color: var(--gold);
+      letter-spacing: 0.12em; text-decoration: none; text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--light); text-decoration: none;
+      font-size: 0.78rem; letter-spacing: 0.14em;
+      text-transform: uppercase; opacity: 0.75;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #0D0D0D 0%, #1a1208 50%, #0D0D0D 100%);
+    }
+    .hero-bg-pattern {
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(ellipse 60% 50% at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+        repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(201,168,76,0.015) 40px, rgba(201,168,76,0.015) 41px);
+      pointer-events: none;
+    }
+    .hero-line {
+      position: absolute; top: 50%; left: 0; width: 100%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.2), transparent);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: inline-block;
+      width: 40px; height: 1px; background: var(--gold);
+    }
+    .hero-title { font-size: clamp(3.5rem, 8vw, 7rem); line-height: 1.0; margin-bottom: 0.3rem; }
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: clamp(1.4rem, 3vw, 2.2rem); color: var(--gold-lt);
+      margin-bottom: 2rem; font-weight: 300;
+    }
+    .hero-desc {
+      font-size: 0.95rem; color: var(--muted);
+      max-width: 400px; line-height: 1.8; margin-bottom: 2.5rem;
+    }
+    .btn-gold {
+      background: transparent; border: 1px solid var(--gold); color: var(--gold);
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 0.85rem 2.2rem; text-decoration: none;
+      transition: background 0.3s, color 0.3s; display: inline-block;
+    }
+    .btn-gold:hover { background: var(--gold); color: var(--dark); }
+    .btn-outline-light-sm {
+      background: transparent; border: 1px solid rgba(245,242,237,0.25);
+      color: var(--light); font-size: 0.75rem; letter-spacing: 0.15em;
+      text-transform: uppercase; padding: 0.85rem 2.2rem; text-decoration: none;
+      transition: border-color 0.3s, color 0.3s; display: inline-block;
+    }
+    .btn-outline-light-sm:hover { border-color: var(--light); color: var(--white); }
+
+    .hero-stats {
+      position: absolute; right: 0; top: 50%;
+      transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: 2.5rem; padding-right: 4rem;
+    }
+    .stat-item { text-align: right; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif; font-size: 3rem;
+      font-weight: 300; color: var(--gold); line-height: 1;
+    }
+    .stat-label { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+
+    /* ABOUT */
+    #about { background: var(--charcoal); padding: 7rem 0; }
+    .about-img-frame { position: relative; display: inline-block; }
+    .about-img-placeholder {
+      width: 100%; aspect-ratio: 3/4;
+      background: linear-gradient(160deg, var(--mid) 0%, #111 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: var(--muted); font-size: 0.8rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      border: 1px solid rgba(201,168,76,0.15);
+    }
+    .about-frame-accent {
+      position: absolute; top: -10px; right: -10px;
+      width: calc(100% - 20px); height: calc(100% - 20px);
+      border: 1px solid rgba(201,168,76,0.25); pointer-events: none;
+    }
+    .section-tag { font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 300;
+      line-height: 1.15; margin-bottom: 1.5rem;
+    }
+    .about-detail {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.88rem;
+    }
+    .about-detail i { color: var(--gold); width: 16px; }
+    .about-detail span { color: var(--muted); }
+    .about-detail strong { color: var(--light); }
+
+    /* SERVICES */
+    #services { background: var(--dark); padding: 7rem 0; }
+    .service-card {
+      background: var(--charcoal); border: 1px solid rgba(201,168,76,0.1);
+      padding: 2.5rem 2rem; transition: border-color 0.3s, transform 0.3s; height: 100%;
+    }
+    .service-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-4px); }
+    .service-icon {
+      width: 48px; height: 48px; border: 1px solid rgba(201,168,76,0.3);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.5rem; color: var(--gold); font-size: 1.2rem;
+    }
+    .service-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; margin-bottom: 0.75rem; }
+    .service-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.8; }
+
+    /* QUALITIES */
+    #qualities { background: var(--charcoal); padding: 7rem 0; }
+    .quality-row {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .quality-num { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold); opacity: 0.5; min-width: 2rem; }
+    .quality-name { font-size: 0.9rem; letter-spacing: 0.05em; flex: 1; }
+    .quality-bar-track { width: 120px; height: 2px; background: rgba(255,255,255,0.08); position: relative; }
+    .quality-bar-fill {
+      position: absolute; top: 0; left: 0; height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-lt));
+    }
+
+    /* TESTIMONIALS */
+    #testimonials { background: var(--dark); padding: 7rem 0; }
+    .testimonial-card { background: var(--charcoal); border-left: 2px solid var(--gold); padding: 2rem 2rem 2rem 2.5rem; }
+    .testimonial-quote {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 1.15rem; font-weight: 300; color: var(--light);
+      line-height: 1.7; margin-bottom: 1.25rem;
+    }
+    .testimonial-author { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); }
+    .testimonial-stars { color: var(--gold); font-size: 0.7rem; margin-bottom: 1rem; }
+
+    /* CONTACT */
+    #contact { background: var(--charcoal); padding: 7rem 0; }
+    .contact-box { background: var(--dark); border: 1px solid rgba(201,168,76,0.15); padding: 3.5rem; }
+    .contact-item { display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; }
+    .contact-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      border: 1px solid rgba(201,168,76,0.3);
+      display: flex; align-items: center; justify-content: center; color: var(--gold);
+    }
+    .contact-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+    .contact-value { font-size: 0.95rem; margin-top: 0.25rem; }
+    .form-control-dark {
+      background: var(--charcoal) !important; border: 1px solid rgba(255,255,255,0.1) !important;
+      color: var(--light) !important; border-radius: 0 !important;
+      padding: 0.85rem 1rem; font-size: 0.88rem;
+      font-family: 'Inter', sans-serif; font-weight: 300;
+    }
+    .form-control-dark::placeholder { color: var(--muted); }
+    .form-control-dark:focus { box-shadow: none !important; border-color: rgba(201,168,76,0.4) !important; }
+
+    /* FOOTER */
+    footer {
+      background: #080808; border-top: 1px solid rgba(201,168,76,0.1);
+      padding: 2.5rem 0; text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.6rem;
+      color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem;
+    }
+    .footer-copy { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.1em; }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 768px) {
+      .hero-stats { display: none; }
+      .nav-links { display: none; }
+      .contact-box { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Mohit Chand</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#qualities">Profile</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-line"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7 hero-content">
+        <p class="hero-eyebrow">Premium Companion</p>
+        <h1 class="hero-title display-serif">
+          Mohit<br/>
+          <span class="gold">Chand</span>
+        </h1>
+        <p class="hero-subtitle">Your Elite Male Escort & Social Companion</p>
+        <p class="hero-desc">
+          With five years of dedicated experience, I offer refined companionship
+          for discerning clients — combining charm, confidence, and
+          impeccable discretion for every occasion.
+        </p>
+        <div class="d-flex gap-3 flex-wrap">
+          <a href="#contact" class="btn-gold">Book a Meeting</a>
+          <a href="#services" class="btn-outline-light-sm">View Services</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-stats d-none d-lg-flex">
+    <div class="stat-item"><div class="stat-num">5+</div><div class="stat-label">Years Experience</div></div>
+    <div class="stat-item"><div class="stat-num">200+</div><div class="stat-label">Happy Clients</div></div>
+    <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Discretion</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-5 reveal">
+        <div class="about-img-frame">
+          <div class="about-img-placeholder" style="padding:0;overflow:hidden;background:linear-gradient(160deg,#1a1208 0%,#0d0d0d 100%);">
+            <svg viewBox="0 0 400 530" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+              <defs>
+                <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1a1208"/><stop offset="100%" stop-color="#0a0a0a"/>
+                </linearGradient>
+                <linearGradient id="suitGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1c1c1c"/><stop offset="100%" stop-color="#0a0a0a"/>
+                </linearGradient>
+                <radialGradient id="faceLight" cx="45%" cy="35%" r="55%">
+                  <stop offset="0%" stop-color="#d4915a"/><stop offset="100%" stop-color="#8b5e3c"/>
+                </radialGradient>
+                <linearGradient id="glowGrad" x1="0.5" y1="0" x2="0.5" y2="1">
+                  <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.18"/><stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <rect width="400" height="530" fill="url(#bgGrad)"/>
+              <ellipse cx="200" cy="280" rx="160" ry="200" fill="url(#glowGrad)"/>
+              <circle cx="200" cy="60" r="50" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.3"/>
+              <!-- Suit -->
+              <path d="M80 530 L90 350 Q100 310 140 295 L175 285 L200 320 L225 285 L260 295 Q300 310 310 350 L320 530 Z" fill="url(#suitGrad)"/>
+              <path d="M175 285 L200 320 L165 380 L130 340 Q115 320 140 295 Z" fill="#242424"/>
+              <path d="M225 285 L200 320 L235 380 L270 340 Q285 320 260 295 Z" fill="#242424"/>
+              <path d="M185 285 L200 320 L215 285 L208 280 L200 295 L192 280 Z" fill="#e8e0d0"/>
+              <path d="M196 283 L204 283 L207 310 L200 330 L193 310 Z" fill="#C9A84C"/>
+              <path d="M115 330 L130 325 L132 335 L117 340 Z" fill="#C9A84C" opacity="0.8"/>
+              <!-- Neck -->
+              <rect x="185" y="255" width="30" height="38" rx="10" fill="#c68642"/>
+              <!-- Head -->
+              <ellipse cx="200" cy="195" rx="58" ry="68" fill="url(#faceLight)"/>
+              <ellipse cx="143" cy="198" rx="10" ry="14" fill="#b87040"/>
+              <ellipse cx="257" cy="198" rx="10" ry="14" fill="#b87040"/>
+              <!-- Hair -->
+              <path d="M145 155 Q155 120 200 115 Q245 120 255 155 Q260 140 250 125 Q230 100 200 98 Q170 100 150 125 Q140 140 145 155 Z" fill="#1a0f08"/>
+              <!-- Eyebrows -->
+              <path d="M163 172 Q178 167 193 170" stroke="#1a0f08" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+              <path d="M207 170 Q222 167 237 172" stroke="#1a0f08" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+              <!-- Eyes -->
+              <ellipse cx="178" cy="186" rx="13" ry="9" fill="#f0e8e0"/>
+              <ellipse cx="222" cy="186" rx="13" ry="9" fill="#f0e8e0"/>
+              <circle cx="178" cy="186" r="7" fill="#3d2010"/>
+              <circle cx="222" cy="186" r="7" fill="#3d2010"/>
+              <circle cx="178" cy="186" r="4" fill="#0d0808"/>
+              <circle cx="222" cy="186" r="4" fill="#0d0808"/>
+              <circle cx="181" cy="183" r="2" fill="white" opacity="0.7"/>
+              <circle cx="225" cy="183" r="2" fill="white" opacity="0.7"/>
+              <!-- Nose -->
+              <path d="M197 193 L194 218 Q197 223 200 223 Q203 223 206 218 L203 193" fill="#b06838" opacity="0.6"/>
+              <!-- Mouth -->
+              <path d="M183 236 Q191 231 200 233 Q209 231 217 236 Q209 240 200 239 Q191 240 183 236 Z" fill="#8b4820"/>
+              <path d="M183 236 Q191 246 200 247 Q209 246 217 236 Q209 240 200 239 Q191 240 183 236 Z" fill="#a05028"/>
+              <!-- Decorative corners -->
+              <line x1="10" y1="10" x2="40" y2="10" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/>
+              <line x1="10" y1="10" x2="10" y2="40" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/>
+              <line x1="360" y1="10" x2="390" y2="10" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/>
+              <line x1="390" y1="10" x2="390" y2="40" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/>
+              <line x1="10" y1="520" x2="40" y2="520" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/>
+              <line x1="390" y1="490" x2="390" y2="520" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/>
+              <text x="200" y="508" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="16" fill="#C9A84C" letter-spacing="3" opacity="0.7">MOHIT CHAND</text>
+            </svg>
+          </div>
+          <div class="about-frame-accent"></div>
+        </div>
+      </div>
+      <div class="col-lg-6 offset-lg-1 reveal">
+        <p class="section-tag">About Me</p>
+        <h2 class="section-title">Sophistication &amp;<br/><em class="gold">Genuine Connection</em></h2>
+        <p style="color:var(--muted);font-size:0.92rem;margin-bottom:2rem;line-height:1.9;">
+          I'm Mohit Chand — a professional male escort based in India with over five years
+          of experience providing premium companionship services. I pride myself on
+          creating comfortable, enjoyable, and completely discreet experiences tailored
+          to each client's unique needs and preferences.
+        </p>
+        <div>
+          <div class="about-detail"><i class="bi bi-person-check"></i><span>Name:</span><strong>Mohit Chand</strong></div>
+          <div class="about-detail"><i class="bi bi-briefcase"></i><span>Experience:</span><strong>5 Years Professional</strong></div>
+          <div class="about-detail"><i class="bi bi-geo-alt"></i><span>Based in:</span><strong>India (Nationwide Available)</strong></div>
+          <div class="about-detail"><i class="bi bi-translate"></i><span>Languages:</span><strong>Hindi, English</strong></div>
+          <div class="about-detail"><i class="bi bi-shield-check"></i><span>Discretion:</span><strong>100% Confidential</strong></div>
+        </div>
+        <div class="mt-4"><a href="#contact" class="btn-gold">Get in Touch</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <p class="section-tag">What I Offer</p>
+      <h2 class="section-title">Premium Services</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-stars"></i></div>
+          <h3 class="service-title">Social Events</h3>
+          <p class="service-desc">Accompany you to galas, weddings, corporate dinners, and social gatherings with confidence and charm.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-airplane"></i></div>
+          <h3 class="service-title">Travel Companion</h3>
+          <p class="service-desc">Available for domestic and international travel — the perfect cultured companion for business or leisure.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-cup-hot"></i></div>
+          <h3 class="service-title">Dinner Dates</h3>
+          <p class="service-desc">Enjoy fine dining in great company — engaging conversation and a memorable evening crafted around you.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-heart"></i></div>
+          <h3 class="service-title">Emotional Support</h3>
+          <p class="service-desc">A compassionate, non-judgmental companion for those seeking genuine connection and understanding.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-camera"></i></div>
+          <h3 class="service-title">Photo & Media Escort</h3>
+          <p class="service-desc">A confident, photogenic partner for shoots, portfolio sessions, or public appearances.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-shield-lock"></i></div>
+          <h3 class="service-title">VIP Discretion Package</h3>
+          <p class="service-desc">Tailored for high-profile clients requiring absolute privacy — complete confidentiality guaranteed.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUALITIES -->
+<section id="qualities">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-5 reveal">
+        <p class="section-tag">My Profile</p>
+        <h2 class="section-title">Skills &amp;<br/><em class="gold">Personal Qualities</em></h2>
+        <div class="row g-3 text-center mt-2">
+          <div class="col-4">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--gold);">5+</div>
+            <div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Years Active</div>
+          </div>
+          <div class="col-4">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--gold);">200+</div>
+            <div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Clients Served</div>
+          </div>
+          <div class="col-4">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--gold);">4.9★</div>
+            <div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Avg. Rating</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 offset-lg-1 reveal">
+        <div class="quality-row"><span class="quality-num">01</span><span class="quality-name">Charm & Conversation</span><div class="quality-bar-track"><div class="quality-bar-fill" style="width:96%"></div></div></div>
+        <div class="quality-row"><span class="quality-num">02</span><span class="quality-name">Discretion & Privacy</span><div class="quality-bar-track"><div class="quality-bar-fill" style="width:100%"></div></div></div>
+        <div class="quality-row"><span class="quality-num">03</span><span class="quality-name">Punctuality & Reliability</span><div class="quality-bar-track"><div class="quality-bar-fill" style="width:98%"></div></div></div>
+        <div class="quality-row"><span class="quality-num">04</span><span class="quality-name">Emotional Intelligence</span><div class="quality-bar-track"><div class="quality-bar-fill" style="width:92%"></div></div></div>
+        <div class="quality-row"><span class="quality-num">05</span><span class="quality-name">Adaptability & Versatility</span><div class="quality-bar-track"><div class="quality-bar-fill" style="width:95%"></div></div></div>
+        <div class="quality-row"><span class="quality-num">06</span><span class="quality-name">Professional Grooming</span><div class="quality-bar-track"><div class="quality-bar-fill" style="width:100%"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <p class="section-tag">Client Voices</p>
+      <h2 class="section-title">What Clients Say</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">"Mohit was the perfect companion for my corporate event. Polished, articulate, and genuinely great company."</p>
+          <span class="testimonial-author">— Priya R., Mumbai</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">"Mohit made me feel so comfortable and respected. An absolutely wonderful evening — exactly what I needed."</p>
+          <span class="testimonial-author">— Anita K., Delhi</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">"His discretion is unmatched. Traveled with me for a week and was the ideal companion — charming and trustworthy."</p>
+          <span class="testimonial-author">— Meera S., Bangalore</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <p class="section-tag">Let's Connect</p>
+      <h2 class="section-title">Book a Meeting</h2>
+      <p style="color:var(--muted);font-size:0.88rem;max-width:420px;margin:0 auto;">All enquiries are treated with absolute confidentiality. I typically respond within a few hours.</p>
+    </div>
+    <div class="row g-5">
+      <div class="col-lg-5 reveal">
+        <div class="contact-item">
+          <div class="contact-icon"><i class="bi bi-whatsapp"></i></div>
+          <div><p class="contact-label">WhatsApp</p><p class="contact-value">+91 98765 43210</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="bi bi-envelope"></i></div>
+          <div><p class="contact-label">Email</p><p class="contact-value">mohit@premiumcompanion.in</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="bi bi-geo-alt"></i></div>
+          <div><p class="contact-label">Service Area</p><p class="contact-value">Pan India · International on Request</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="bi bi-clock"></i></div>
+          <div><p class="contact-label">Availability</p><p class="contact-value">Flexible — 24 hrs notice preferred</p></div>
+        </div>
+      </div>
+      <div class="col-lg-7 reveal">
+        <div class="contact-box">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:0.5rem;">Your Name</label>
+              <input type="text" class="form-control form-control-dark" placeholder="First name"/>
+            </div>
+            <div class="col-md-6">
+              <label style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:0.5rem;">Contact</label>
+              <input type="text" class="form-control form-control-dark" placeholder="Phone or email"/>
+            </div>
+            <div class="col-12">
+              <label style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:0.5rem;">Type of Engagement</label>
+              <select class="form-control form-control-dark">
+                <option value="">Select a service</option>
+                <option>Social Event / Party</option>
+                <option>Dinner Date</option>
+                <option>Travel Companion</option>
+                <option>Photo / Media Escort</option>
+                <option>Emotional Support</option>
+                <option>VIP Discretion Package</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:0.5rem;">Preferred Date</label>
+              <input type="date" class="form-control form-control-dark"/>
+            </div>
+            <div class="col-md-6">
+              <label style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:0.5rem;">City / Location</label>
+              <input type="text" class="form-control form-control-dark" placeholder="Where?"/>
+            </div>
+            <div class="col-12">
+              <label style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:0.5rem;">Message</label>
+              <textarea class="form-control form-control-dark" rows="4" placeholder="Tell me about the occasion…"></textarea>
+            </div>
+            <div class="col-12 mt-1">
+              <button class="btn-gold" style="width:100%;cursor:pointer;border:none;" onclick="alert('Message sent! Mohit will contact you shortly.')">
+                Send Enquiry
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Mohit Chand</div>
+  <p class="footer-copy">© 2026 Mohit Chand · Premium Companion · All rights reserved · Discreet &amp; Professional</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
