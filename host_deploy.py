@@ -44,4 +44,4 @@ def stop_machine():
    print(response)
 
 
-stop_machine()
+create_machine("my_profile")
